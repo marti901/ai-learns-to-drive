@@ -6,18 +6,18 @@ export class Car{
 
     constructor(
         private position = new Vector2D(500, 500),
-        private velocity = 5,
+        private velocity = 4,
         private angle = 3.9269,
         private centerRay = new Ray(new Vector2D(), new Vector2D())
     ) {}
 
     update(): void {
-        this.angle += 0.075;
+        this.angle += 0.025;
 
         this.position.x += Math.sin(this.angle) * this.velocity;
         this.position.y -= Math.cos(this.angle) * this.velocity;
 
-        this.centerRay.startPosition = this.position.addVector(
+        this.centerRay.position = this.position.addVector(
             new Vector2D(
                 Math.sin(this.angle) * 38,
                 -Math.cos(this.angle) * 38));

@@ -9,6 +9,10 @@ export class Vector2D {
         return new Vector2D(this.x + v.x, this.y + v.y);
     }
 
+    public subtractVector(v: Vector2D): Vector2D { 
+        return new Vector2D(this.x - v.x, this.y - v.y);
+    }
+
     public multiply(f: number) : Vector2D {
         return new Vector2D(this.x * f, this.y * f);
     }
@@ -19,6 +23,10 @@ export class Vector2D {
 
     public calculateLength(): number {
         return Math.sqrt((this.x*this.x)+(this.y*this.y));
+    }
+
+    public crossProduct(v: Vector2D): number{
+        return (this.x * v.y) - (this.y * v.x); 
     }
 
     public dotProduct(v: Vector2D): number{
