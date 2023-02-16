@@ -42,7 +42,7 @@ export class Ray{
             this.position.y + (this.direction.y * 1000));
     }
 
-    // Returns undeifned when the two rays are parallel or intersection behind strart
+    // Returns undefined when the two rays are parallel or intersection behind strart
     public getIntersectionPoint(ray: Ray): (Vector2D | undefined) {
 
         const cross = this.direction.crossProduct(ray.direction);
