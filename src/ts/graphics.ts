@@ -1,5 +1,3 @@
-import { Vector2D } from "./vector2d";
-
 const canvas = document.querySelector('canvas') as any;
 const context = canvas.getContext("2d")!;
 

@@ -1,3 +1,4 @@
+import { Ray } from './ray';
 import { Graphics } from './graphics';
 import { Vector2D } from './vector2d';
 
@@ -6,7 +7,8 @@ export class Car{
     constructor(
         private position = new Vector2D(500, 500),
         private velocity = 5,
-        private angle = 3.9269
+        private angle = 3.9269,
+        private centerRay = new Ray(new Vector2D(), new Vector2D())
     ) {}
 
     update(): void {
@@ -14,6 +16,17 @@ export class Car{
 
         this.position.x += Math.sin(this.angle) * this.velocity;
         this.position.y -= Math.cos(this.angle) * this.velocity;
+
+        this.centerRay.startPosition = this.position.addVector(
+            new Vector2D(
+                Math.sin(this.angle) * 38,
+                -Math.cos(this.angle) * 38));
+
+        this.centerRay.direction = new Vector2D(
+            Math.sin(this.angle),
+            -Math.cos(this.angle)
+        );
+        
         this.updateVelocity();
     }
 
@@ -31,6 +44,7 @@ export class Car{
         Graphics.context.rotate(this.angle);
         this.drawCar();
         Graphics.context.restore();
+        this.centerRay.draw();
     }
 
     drawCar(): void {
